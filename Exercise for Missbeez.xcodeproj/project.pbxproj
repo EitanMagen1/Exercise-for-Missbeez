@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		464BC66E1C709C420098594B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BC66D1C709C420098594B /* AppDelegate.swift */; };
-		464BC6701C709C420098594B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BC66F1C709C420098594B /* ViewController.swift */; };
+		464BC6701C709C420098594B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BC66F1C709C420098594B /* MainViewController.swift */; };
 		464BC6731C709C420098594B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464BC6711C709C420098594B /* Main.storyboard */; };
 		464BC6751C709C420098594B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464BC6741C709C420098594B /* Assets.xcassets */; };
 		464BC6781C709C420098594B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464BC6761C709C420098594B /* LaunchScreen.storyboard */; };
 		464BC6831C709C430098594B /* Exercise_for_MissbeezTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BC6821C709C430098594B /* Exercise_for_MissbeezTests.swift */; };
 		464BC68E1C709C430098594B /* Exercise_for_MissbeezUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BC68D1C709C430098594B /* Exercise_for_MissbeezUITests.swift */; };
+		46BAD1121C70C1EB008D2A5C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BAD1111C70C1EB008D2A5C /* MainTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		464BC66A1C709C420098594B /* Exercise for Missbeez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exercise for Missbeez.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		464BC66D1C709C420098594B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		464BC66F1C709C420098594B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		464BC66F1C709C420098594B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		464BC6721C709C420098594B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		464BC6741C709C420098594B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		464BC6771C709C420098594B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		464BC6891C709C430098594B /* Exercise for MissbeezUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Exercise for MissbeezUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		464BC68D1C709C430098594B /* Exercise_for_MissbeezUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise_for_MissbeezUITests.swift; sourceTree = "<group>"; };
 		464BC68F1C709C430098594B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46BAD1111C70C1EB008D2A5C /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				464BC66D1C709C420098594B /* AppDelegate.swift */,
-				464BC66F1C709C420098594B /* ViewController.swift */,
+				464BC66F1C709C420098594B /* MainViewController.swift */,
+				46BAD1111C70C1EB008D2A5C /* MainTableViewCell.swift */,
 				464BC6711C709C420098594B /* Main.storyboard */,
 				464BC6741C709C420098594B /* Assets.xcassets */,
 				464BC6761C709C420098594B /* LaunchScreen.storyboard */,
@@ -259,7 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				464BC6701C709C420098594B /* ViewController.swift in Sources */,
+				464BC6701C709C420098594B /* MainViewController.swift in Sources */,
+				46BAD1121C70C1EB008D2A5C /* MainTableViewCell.swift in Sources */,
 				464BC66E1C709C420098594B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +489,7 @@
 				464BC6941C709C430098594B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		464BC6951C709C430098594B /* Build configuration list for PBXNativeTarget "Exercise for MissbeezTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +498,7 @@
 				464BC6971C709C430098594B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		464BC6981C709C430098594B /* Build configuration list for PBXNativeTarget "Exercise for MissbeezUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +507,7 @@
 				464BC69A1C709C430098594B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
