@@ -59,7 +59,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     }
    
        // Set the factor for the parallaxEffect. This is overwritable.
-    var parallaxFactor:CGFloat = 3
+    var parallaxFactor:CGFloat = 1
     
     // Set the default height for the image on the top.
     var imageHeight:CGFloat = 300 {
