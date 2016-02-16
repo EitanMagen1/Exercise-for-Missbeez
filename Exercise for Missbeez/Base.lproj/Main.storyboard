@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -103,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="199.5" y="215"/>
         </scene>
-        <!--Treatment-->
+        <!--Display Table View Controller-->
         <scene sceneID="5h9-25-u70">
             <objects>
                 <viewController id="rs4-dE-Pow" customClass="DisplayTableViewController" customModule="Exercise_for_Missbeez" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,52 +116,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-5j-vnF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="39" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-5j-vnF">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="YxW-UT-0Lk">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="292" id="Ron-qv-HZd">
+                                        <variation key="widthClass=compact" constant="600"/>
+                                    </constraint>
+                                </constraints>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="HRE-c7-b6P">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bpp-9N-drp">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mUN-zY-sb1">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="bpp-9N-drp" firstAttribute="top" secondItem="YxW-UT-0Lk" secondAttribute="top" id="YDe-bo-HVA"/>
-                                        <constraint firstAttribute="bottom" secondItem="bpp-9N-drp" secondAttribute="bottom" id="i7E-KU-Tgb"/>
-                                        <constraint firstItem="bpp-9N-drp" firstAttribute="leading" secondItem="YxW-UT-0Lk" secondAttribute="leading" id="rdX-XS-ZkP"/>
-                                        <constraint firstAttribute="trailing" secondItem="bpp-9N-drp" secondAttribute="trailing" id="yaK-oV-9nJ"/>
+                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="centerY" secondItem="HRE-c7-b6P" secondAttribute="centerY" id="IhL-h6-2RD"/>
+                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="width" secondItem="HRE-c7-b6P" secondAttribute="width" id="WFP-Sy-3b5"/>
+                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="height" secondItem="HRE-c7-b6P" secondAttribute="height" id="faT-hm-rXV"/>
+                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="centerX" secondItem="HRE-c7-b6P" secondAttribute="centerX" id="hcb-vf-sCt"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
-                                            <exclude reference="bpp-9N-drp"/>
+                                            <exclude reference="mUN-zY-sb1"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="YDe-bo-HVA"/>
-                                            <exclude reference="i7E-KU-Tgb"/>
-                                            <exclude reference="rdX-XS-ZkP"/>
-                                            <exclude reference="yaK-oV-9nJ"/>
+                                            <exclude reference="IhL-h6-2RD"/>
+                                            <exclude reference="WFP-Sy-3b5"/>
+                                            <exclude reference="faT-hm-rXV"/>
+                                            <exclude reference="hcb-vf-sCt"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="subviews">
-                                            <include reference="bpp-9N-drp"/>
+                                            <include reference="mUN-zY-sb1"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="YDe-bo-HVA"/>
-                                            <include reference="i7E-KU-Tgb"/>
-                                            <include reference="rdX-XS-ZkP"/>
-                                            <include reference="yaK-oV-9nJ"/>
+                                            <include reference="IhL-h6-2RD"/>
+                                            <include reference="WFP-Sy-3b5"/>
+                                            <include reference="faT-hm-rXV"/>
+                                            <include reference="hcb-vf-sCt"/>
                                         </mask>
                                     </variation>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellIdentifier" id="Aw2-7g-EkD" userLabel="cellIdentifier" customClass="DisplayTableViewCell" customModule="Exercise_for_Missbeez" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellIdentifier" rowHeight="39" id="Aw2-7g-EkD" userLabel="cellIdentifier" customClass="DisplayTableViewCell" customModule="Exercise_for_Missbeez" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aw2-7g-EkD" id="TkW-Bk-Tsh">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-DA-fQS">
@@ -168,19 +174,34 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Jha-DA-fQS" firstAttribute="leading" secondItem="TkW-Bk-Tsh" secondAttribute="leading" id="89H-pe-q9L"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jha-DA-fQS" secondAttribute="trailing" id="aHB-d1-Z3j"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Jha-DA-fQS" secondAttribute="bottom" constant="-14" id="dvc-1Y-8wd"/>
+                                                <constraint firstItem="Jha-DA-fQS" firstAttribute="top" secondItem="TkW-Bk-Tsh" secondAttribute="top" id="wT8-n5-IWe"/>
+                                            </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="Jha-DA-fQS"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="89H-pe-q9L"/>
+                                                    <exclude reference="aHB-d1-Z3j"/>
+                                                    <exclude reference="dvc-1Y-8wd"/>
+                                                    <exclude reference="wT8-n5-IWe"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="Jha-DA-fQS"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="89H-pe-q9L"/>
+                                                    <include reference="aHB-d1-Z3j"/>
+                                                    <include reference="dvc-1Y-8wd"/>
+                                                    <include reference="wT8-n5-IWe"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -189,6 +210,16 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ron-qv-HZd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Ron-qv-HZd"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="rs4-dE-Pow" id="T9v-Se-EW0"/>
                                     <outlet property="delegate" destination="rs4-dE-Pow" id="KZx-hb-7Fn"/>
@@ -198,11 +229,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xT3-5j-vnF" firstAttribute="leading" secondItem="doj-8t-EiQ" secondAttribute="leading" id="3WR-5z-w3G"/>
-                            <constraint firstItem="xT3-5j-vnF" firstAttribute="top" secondItem="ZVh-Dy-rXa" secondAttribute="bottom" id="Dfw-zZ-YSE">
-                                <variation key="widthClass=compact" constant="-64"/>
-                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="xT3-5j-vnF" secondAttribute="trailing" id="Qqs-vl-MPP"/>
                             <constraint firstItem="xT3-5j-vnF" firstAttribute="bottom" secondItem="3kS-Pq-tYN" secondAttribute="top" id="cA1-bO-KKG"/>
+                            <constraint firstItem="3kS-Pq-tYN" firstAttribute="top" secondItem="xT3-5j-vnF" secondAttribute="bottom" id="ssF-Lg-fUT"/>
+                            <constraint firstItem="xT3-5j-vnF" firstAttribute="top" secondItem="doj-8t-EiQ" secondAttribute="topMargin" id="yz9-r2-UiT"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -210,9 +240,10 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="3WR-5z-w3G"/>
-                                <exclude reference="Dfw-zZ-YSE"/>
                                 <exclude reference="Qqs-vl-MPP"/>
                                 <exclude reference="cA1-bO-KKG"/>
+                                <exclude reference="yz9-r2-UiT"/>
+                                <exclude reference="ssF-Lg-fUT"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -221,15 +252,16 @@
                             </mask>
                             <mask key="constraints">
                                 <include reference="3WR-5z-w3G"/>
-                                <include reference="Dfw-zZ-YSE"/>
                                 <include reference="Qqs-vl-MPP"/>
                                 <include reference="cA1-bO-KKG"/>
+                                <include reference="yz9-r2-UiT"/>
+                                <include reference="ssF-Lg-fUT"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Treatment" id="rbC-BS-EEQ"/>
+                    <navigationItem key="navigationItem" id="rbC-BS-EEQ"/>
                     <connections>
-                        <outlet property="imageView" destination="bpp-9N-drp" id="tt9-PR-Xsi"/>
+                        <outlet property="imageView" destination="mUN-zY-sb1" id="alL-Mg-5Zd"/>
                         <outlet property="tableView" destination="xT3-5j-vnF" id="6fj-WJ-uTy"/>
                     </connections>
                 </viewController>

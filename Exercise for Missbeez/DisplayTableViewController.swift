@@ -8,18 +8,14 @@
 
 import UIKit
 
-//private let headerHeight : CGFloat = 500
-//private let headerCut : CGFloat = 50
 
 
-class DisplayTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DisplayTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UIScrollViewDelegate {
 
     // Create the UIImageView
     
     @IBOutlet weak var imageView: UIImageView!
 
-   // var headerView : UIView!
-   // var newHeaderLayer : CAShapeLayer = CAShapeLayer()
     var TitlePassed : String = ""
     var ImageNumber : Int = 0
     
@@ -37,8 +33,19 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         view.sendSubviewToBack(imageView)
         
         imageView.image = UIImage(named: String(ImageNumber))
+        setupNavigationBar()
 
     }
+    private func setupNavigationBar() {
+        let label = UILabel(frame: CGRectMake(0, 0, 200, 30))
+        label.font = UIFont.boldSystemFontOfSize(21.0)
+        label.textColor = UIColor.darkGrayColor()
+        label.textAlignment = .Center
+        label.text = "Treatment"
+        navigationItem.titleView = label
+    }
+    
+    
     @IBOutlet weak var tableView: UITableView!
 
     
@@ -48,7 +55,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         return 1
     }
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 30
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -59,7 +66,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     }
    
        // Set the factor for the parallaxEffect. This is overwritable.
-    var parallaxFactor:CGFloat = 1
+    var parallaxFactor:CGFloat = 2
     
     // Set the default height for the image on the top.
     var imageHeight:CGFloat = 300 {
@@ -75,10 +82,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    
-    
-    
-    
+
     override func viewDidLayoutSubviews() {
         
         // Update the image position after layout changes.

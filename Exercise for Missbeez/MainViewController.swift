@@ -59,7 +59,7 @@ class MainViewController: UITableViewController    {
     var DisplayNewVCtitle : String = ""
     var NumberOfLineChoosen : Int = 0
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         DisplayNewVCtitle = itemDescription[indexPath.row]
         NumberOfLineChoosen = indexPath.row
         self.performSegueWithIdentifier("ShowSecondView", sender: nil);
