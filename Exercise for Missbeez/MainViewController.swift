@@ -24,23 +24,15 @@ class MainViewController: UITableViewController    {
         label.font = UIFont.boldSystemFontOfSize(21.0)
         label.textColor = UIColor.darkGrayColor()
         label.textAlignment = .Center
-        label.text = "Services For You"
+        label.text = "Services"
         
         navigationItem.titleView = label
     }
-    private func setupDescriptionText() {
-        let label = UILabel(frame: CGRectMake(0, 0, 200, 30))
-        //label.font = UIFont.systemFontOfSize(21)
-        label.font = UIFont.boldSystemFontOfSize(21.0)
-        label.textColor = UIColor.darkGrayColor()
-        label.textAlignment = .Center
-       // label.text = "Services For You"
-        
-        navigationItem.titleView = label
-    }
-
+   
     let itemDescription = ["Manicure","Pedicure","Hair treatment","Specials"]
+    
     // MARK: - Table View Delegate and Data Source
+    
     override func tableView(tableView: UITableView,
         heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
@@ -57,21 +49,32 @@ class MainViewController: UITableViewController    {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MainTableViewCell
-        cell.photoImageView.image = imageAtIndex(indexPath.row)
+        cell.photoImageView.image = imageAtIndex(indexPath.row) 
         cell.pictureDescription.textColor = UIColor.whiteColor()
         cell.pictureDescription.text = itemDescription[indexPath.row]
         
         return cell
 
     }
-
+    var DisplayNewVCtitle : String = ""
+    var NumberOfLineChoosen : Int = 0
+    
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        print("1")
+        DisplayNewVCtitle = itemDescription[indexPath.row]
+        NumberOfLineChoosen = indexPath.row
+        self.performSegueWithIdentifier("ShowSecondView", sender: nil);
+
     }
     
     func imageAtIndex(index: Int) -> UIImage? {
         return UIImage(named: String(index))
     }
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowSecondView" {
+            let vc : DisplayTableViewController = segue.destinationViewController as! DisplayTableViewController
+            vc.TitlePassed = DisplayNewVCtitle
+            vc.ImageNumber = NumberOfLineChoosen
+        }
+    }
 }
 
