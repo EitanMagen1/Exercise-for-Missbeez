@@ -20,7 +20,6 @@ class MainViewController: UITableViewController    {
 
     private func setupNavigationBar() {
         let label = UILabel(frame: CGRectMake(0, 0, 200, 30))
-        //label.font = UIFont.systemFontOfSize(21)
         label.font = UIFont.boldSystemFontOfSize(21.0)
         label.textColor = UIColor.darkGrayColor()
         label.textAlignment = .Center
