@@ -71,8 +71,8 @@ class MainViewController: UITableViewController    {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowSecondView" {
             let vc : DisplayTableViewController = segue.destinationViewController as! DisplayTableViewController
-            vc.TitlePassed = DisplayNewVCtitle
-            vc.ImageNumber = NumberOfLineChoosen
+            vc.titlePassed = DisplayNewVCtitle
+            vc.imageNumber = NumberOfLineChoosen
         }
     }
 }
