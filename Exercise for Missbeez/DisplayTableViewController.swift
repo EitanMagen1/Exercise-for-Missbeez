@@ -49,12 +49,6 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
 
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30)
-        let c = UIView(frame: frame)
-        c.backgroundColor = UIColor.redColor()
-        return c
-    }
     
     func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -imageHeight, width:  imageWidth, height: imageHeight)
@@ -62,10 +56,12 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
             headerRect.origin.y = tableView.contentOffset.y
             headerRect.size.height = -tableView.contentOffset.y
         }
-        if tableView.contentOffset.y > 0  {
-            headerRect.origin.y = -tableView.contentOffset.y
-            headerRect.size.height = tableView.contentOffset.y
+        if tableView.contentOffset.y > -300  {
+            headerRect.origin.y = tableView.contentOffset.y
+            headerRect.size.height = 300 //-tableView.contentOffset.y
+
         }
+
         headerView.frame = headerRect
     }
     
@@ -106,6 +102,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     // Update scrollOffset on tableview scroll
      func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
+        print ("\(tableView.contentOffset.y)")
     }
    
 
