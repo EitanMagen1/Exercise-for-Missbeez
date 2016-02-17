@@ -17,7 +17,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     
     // Set the default height for the image on the top.
     var imageHeight:CGFloat = 300.0
-    var imageWidth:CGFloat = 414.0
+    var imageWidth:CGFloat = 434.0
 
     
     var titlePassed : String?
@@ -32,9 +32,6 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         // loads the image that was choosen
         
         imageView.image = UIImage(named: String(imageNumber))
-        //view the image
-       // imageView.startAnimating()
-
         setupNavigationBar()
         
         //step 2 : take ownership of the header view we've so nicely setup in the storyboard and then remove it from the table view.
@@ -44,7 +41,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         tableView.addSubview(headerView)
         // step 4 : push the contents of the table view down by the height of the header  then set the contentOffset downward by the same amount so we start off with the header view completely visible
         tableView.contentInset = UIEdgeInsets(top: imageHeight, left: 0, bottom: 0, right: 0 )
-        tableView.contentOffset = CGPoint(x: 0, y:  -imageHeight)
+        tableView.contentOffset = CGPoint(x: 0, y:  -imageHeight )
         updateHeaderView()
 
     }
@@ -52,19 +49,27 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     
     func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -imageHeight, width:  imageWidth, height: imageHeight)
+        // streach the image
         if tableView.contentOffset.y < -imageHeight  {
             headerRect.origin.y = tableView.contentOffset.y
             headerRect.size.height = -tableView.contentOffset.y
         }
-        if tableView.contentOffset.y > -300  {
+        // shrink the image
+        if tableView.contentOffset.y > -imageHeight  && tableView.contentOffset.y < -imageHeight/2 {
             headerRect.origin.y = tableView.contentOffset.y
-            headerRect.size.height = 300 //-tableView.contentOffset.y
+            headerRect.size.height = -tableView.contentOffset.y
 
+        }
+        // keep the image shrinked at the top
+        if tableView.contentOffset.y >  -imageHeight/2 {
+            headerRect.origin.y = tableView.contentOffset.y
+            headerRect.size.height = imageHeight/2
         }
 
         headerView.frame = headerRect
     }
     
+       
     private func setupNavigationBar() {
         let label = UILabel(frame: CGRectMake(0, 0, 200, 30))
         label.font = UIFont.boldSystemFontOfSize(21.0)
@@ -72,7 +77,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         label.textAlignment = .Center
         label.text = "Treatment"
         navigationItem.titleView = label
-        navigationController?.navigationItem.titleView?.alpha = 0.5
+        navigationController?.navigationItem.titleView?.alpha = 0.2
     }
     
     
@@ -92,6 +97,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath) as! DisplayTableViewCell
         
         cell.Title.text =  titlePassed! + " at row # \(indexPath.row)"
+        
         return cell
     }
     
