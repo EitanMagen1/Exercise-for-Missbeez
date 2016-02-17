@@ -49,6 +49,13 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
 
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30)
+        let c = UIView(frame: frame)
+        c.backgroundColor = UIColor.redColor()
+        return c
+    }
+    
     func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -imageHeight, width:  imageWidth, height: imageHeight)
         if tableView.contentOffset.y < -imageHeight  {
