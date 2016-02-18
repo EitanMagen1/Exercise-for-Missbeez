@@ -107,7 +107,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
-    // MARK: - UIScrollView delegate    
+    // MARK: - UIScrollView delegate
     
     
     // Update scrollOffset on tableview scroll
