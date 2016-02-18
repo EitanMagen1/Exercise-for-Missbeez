@@ -17,9 +17,10 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: UITableView!
     
     // Set the default height for the image on the top.
-    var imageHeight:CGFloat = 300.0
-    // to do ...make the width fit phone size not contant
-    var imageWidth:CGFloat = 434.0
+    var imageHeight:CGFloat = UIScreen.mainScreen().bounds.height / 2.5
+    
+    //make the image a bit largr so the shrink effect will be effective
+    var imageWidth:CGFloat =  UIScreen.mainScreen().bounds.width + 20
     var TitleText : String = ""
     var titlePassed : String?
     var imageNumber : Int = 0
@@ -29,7 +30,9 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        print("\(imageWidth)")
+        print("\(imageHeight)")
+
         // loads the image that was choosen
         
         imageView.image = UIImage(named: String(imageNumber))
@@ -114,7 +117,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     // Update scrollOffset on tableview scroll
      func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
-        print ("\(tableView.contentOffset.y)")
+       // print ("\(tableView.contentOffset.y)")
     }
    
 
