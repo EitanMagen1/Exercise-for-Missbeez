@@ -129,28 +129,20 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="leading" secondItem="HRE-c7-b6P" secondAttribute="leading" constant="76" id="Ixr-dR-JjG">
-                                            <variation key="widthClass=compact" constant="-32"/>
-                                        </constraint>
-                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="bottom" secondItem="HRE-c7-b6P" secondAttribute="bottomMargin" id="Rb3-LB-0lh">
-                                            <variation key="widthClass=compact" constant="8"/>
-                                        </constraint>
-                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="centerX" secondItem="HRE-c7-b6P" secondAttribute="centerX" id="USM-xu-hLG">
-                                            <variation key="widthClass=compact" constant="-15"/>
-                                        </constraint>
-                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="centerY" secondItem="HRE-c7-b6P" secondAttribute="centerY" id="elO-Xt-PSJ">
-                                            <variation key="widthClass=compact" constant="-55.5"/>
-                                        </constraint>
+                                        <constraint firstAttribute="trailing" secondItem="mUN-zY-sb1" secondAttribute="trailing" id="0vM-ee-xip"/>
+                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="leading" secondItem="HRE-c7-b6P" secondAttribute="leading" id="SeC-4p-SUb"/>
+                                        <constraint firstAttribute="bottom" secondItem="mUN-zY-sb1" secondAttribute="bottom" id="mhN-W3-hLN"/>
+                                        <constraint firstItem="mUN-zY-sb1" firstAttribute="top" secondItem="HRE-c7-b6P" secondAttribute="top" id="nbB-vb-G1o"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="mUN-zY-sb1"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="Ixr-dR-JjG"/>
-                                            <exclude reference="Rb3-LB-0lh"/>
-                                            <exclude reference="USM-xu-hLG"/>
-                                            <exclude reference="elO-Xt-PSJ"/>
+                                            <exclude reference="0vM-ee-xip"/>
+                                            <exclude reference="SeC-4p-SUb"/>
+                                            <exclude reference="mhN-W3-hLN"/>
+                                            <exclude reference="nbB-vb-G1o"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -158,10 +150,10 @@
                                             <include reference="mUN-zY-sb1"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="Ixr-dR-JjG"/>
-                                            <include reference="Rb3-LB-0lh"/>
-                                            <include reference="USM-xu-hLG"/>
-                                            <include reference="elO-Xt-PSJ"/>
+                                            <include reference="0vM-ee-xip"/>
+                                            <include reference="SeC-4p-SUb"/>
+                                            <include reference="mhN-W3-hLN"/>
+                                            <include reference="nbB-vb-G1o"/>
                                         </mask>
                                     </variation>
                                 </view>

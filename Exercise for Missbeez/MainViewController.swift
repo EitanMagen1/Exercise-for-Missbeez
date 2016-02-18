@@ -51,6 +51,8 @@ class MainViewController: UITableViewController    {
         cell.photoImageView.image = imageAtIndex(indexPath.row) 
         cell.pictureDescription.textColor = UIColor.whiteColor()
         cell.pictureDescription.text = itemDescription[indexPath.row]
+        cell.pictureDescription.font = UIFont.systemFontOfSize(20.0)
+
         
         return cell
 

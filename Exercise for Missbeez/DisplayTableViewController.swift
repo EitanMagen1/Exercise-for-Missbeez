@@ -14,12 +14,13 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     // Create the UIImageView
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
     // Set the default height for the image on the top.
     var imageHeight:CGFloat = 300.0
+    // to do ...make the width fit phone size not contant
     var imageWidth:CGFloat = 434.0
-
-    
+    var TitleText : String = ""
     var titlePassed : String?
     var imageNumber : Int = 0
     //Step 1 :To allow us to manage the table header we can't use the tableHeaderView property of UITableView because the table view manages the frame of its table header. We need to create and manage our own view. Add the following property right before items:
@@ -56,20 +57,20 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
             setupNavigationBar()
         }
         // shrink the image
-        if tableView.contentOffset.y > -imageHeight  && tableView.contentOffset.y < -imageHeight/2 {
+        if tableView.contentOffset.y > -imageHeight  && tableView.contentOffset.y < -imageHeight/1.2 {
             headerRect.size.height = -tableView.contentOffset.y
         }
         // keep the image shrinked at the top
-        if tableView.contentOffset.y >  -imageHeight/2 {
-            headerRect.size.height = imageHeight/2
+        if tableView.contentOffset.y >  -imageHeight/1.2 {
+            headerRect.size.height = imageHeight/1.2
             TitleText = titlePassed!
             setupNavigationBar()
         }
         headerRect.origin.y = tableView.contentOffset.y
+        
         headerView.frame = headerRect
     }
     
-    var TitleText : String = ""
     private func setupNavigationBar() {
         let label = UILabel(frame: CGRectMake(0, 0, 200, 30))
         label.font = UIFont.boldSystemFontOfSize(23.0)
@@ -80,7 +81,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
-    @IBOutlet weak var tableView: UITableView!
+ 
 
     
     // MARK: - Table view data source
@@ -89,7 +90,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         return 1
     }
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return 20
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -100,7 +101,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
             cell.Title.textColor = UIColor.darkGrayColor()
             cell.Title.font = UIFont.boldSystemFontOfSize(23.0)
         } else {
-        cell.Title.text =  "This Row's number is \(indexPath.row)"
+        cell.Title.text =  "Services provided"
         }
         
         return cell
