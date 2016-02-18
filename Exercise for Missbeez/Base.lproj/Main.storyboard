@@ -133,13 +133,13 @@
                                             <variation key="widthClass=compact" constant="-32"/>
                                         </constraint>
                                         <constraint firstItem="mUN-zY-sb1" firstAttribute="bottom" secondItem="HRE-c7-b6P" secondAttribute="bottomMargin" id="Rb3-LB-0lh">
-                                            <variation key="widthClass=compact" constant="89"/>
+                                            <variation key="widthClass=compact" constant="8"/>
                                         </constraint>
                                         <constraint firstItem="mUN-zY-sb1" firstAttribute="centerX" secondItem="HRE-c7-b6P" secondAttribute="centerX" id="USM-xu-hLG">
                                             <variation key="widthClass=compact" constant="-15"/>
                                         </constraint>
                                         <constraint firstItem="mUN-zY-sb1" firstAttribute="centerY" secondItem="HRE-c7-b6P" secondAttribute="centerY" id="elO-Xt-PSJ">
-                                            <variation key="widthClass=compact" constant="-15"/>
+                                            <variation key="widthClass=compact" constant="-55.5"/>
                                         </constraint>
                                     </constraints>
                                     <variation key="default">
@@ -172,7 +172,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-DA-fQS">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-DA-fQS">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

@@ -51,33 +51,32 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         var headerRect = CGRect(x: 0, y: -imageHeight, width:  imageWidth, height: imageHeight)
         // streach the image
         if tableView.contentOffset.y < -imageHeight  {
-            headerRect.origin.y = tableView.contentOffset.y
             headerRect.size.height = -tableView.contentOffset.y
+            TitleText = ""
+            setupNavigationBar()
         }
         // shrink the image
         if tableView.contentOffset.y > -imageHeight  && tableView.contentOffset.y < -imageHeight/2 {
-            headerRect.origin.y = tableView.contentOffset.y
             headerRect.size.height = -tableView.contentOffset.y
-
         }
         // keep the image shrinked at the top
         if tableView.contentOffset.y >  -imageHeight/2 {
-            headerRect.origin.y = tableView.contentOffset.y
             headerRect.size.height = imageHeight/2
+            TitleText = titlePassed!
+            setupNavigationBar()
         }
-
+        headerRect.origin.y = tableView.contentOffset.y
         headerView.frame = headerRect
     }
     
-       
+    var TitleText : String = ""
     private func setupNavigationBar() {
         let label = UILabel(frame: CGRectMake(0, 0, 200, 30))
-        label.font = UIFont.boldSystemFontOfSize(21.0)
+        label.font = UIFont.boldSystemFontOfSize(23.0)
         label.textColor = UIColor.darkGrayColor()
         label.textAlignment = .Center
-        label.text = "Treatment"
+        label.text = TitleText //"Treatment"
         navigationItem.titleView = label
-        navigationController?.navigationItem.titleView?.alpha = 0.2
     }
     
     
@@ -95,14 +94,20 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath) as! DisplayTableViewCell
-        
-        cell.Title.text =  titlePassed! + " at row # \(indexPath.row)"
+        if indexPath.row == 0{
+            cell.Title.text = titlePassed!
+            cell.Title.textAlignment = .Center
+            cell.Title.textColor = UIColor.darkGrayColor()
+            cell.Title.font = UIFont.boldSystemFontOfSize(23.0)
+        } else {
+        cell.Title.text =  "This Row's number is \(indexPath.row)"
+        }
         
         return cell
     }
     
     
-    // MARK: - UIScrollView delegate
+    // MARK: - UIScrollView delegate    
     
     
     // Update scrollOffset on tableview scroll
