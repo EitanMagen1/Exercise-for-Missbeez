@@ -12,13 +12,12 @@ import UIKit
 class DisplayTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UIScrollViewDelegate {
 
     // Create the UIImageView
-    
+    @IBOutlet weak var ViewOfTableHeader: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
     // Set the default height for the image on the top.
     var imageHeight:CGFloat = UIScreen.mainScreen().bounds.height / 2.5
-    
     //make the image a bit largr so the shrink effect will be effective
     var imageWidth:CGFloat =  UIScreen.mainScreen().bounds.width + 20
     var TitleText : String = ""
@@ -26,16 +25,13 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     var imageNumber : Int = 0
     //Step 1 :To allow us to manage the table header we can't use the tableHeaderView property of UITableView because the table view manages the frame of its table header. We need to create and manage our own view. Add the following property right before items:
     var headerView: UIView!
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(imageWidth)")
-        print("\(imageHeight)")
 
         // loads the image that was choosen
-        
         imageView.image = UIImage(named: String(imageNumber))
+        landscapeView.image = imageView.image
         setupNavigationBar()
         
         //step 2 : take ownership of the header view we've so nicely setup in the storyboard and then remove it from the table view.
@@ -49,8 +45,17 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         updateHeaderView()
 
     }
+    //layout the old way 
     
-    
+  /*  override func viewWillLayoutSubviews() {
+        
+        if UIDevice.currentDevice().orientation != UIDeviceOrientation.LandscapeLeft && UIDevice.currentDevice().orientation != UIDeviceOrientation.LandscapeRight {
+        }
+    }*/
+
+
+    @IBOutlet weak var landscapeView: UIImageView!
+
     func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -imageHeight, width:  imageWidth, height: imageHeight)
         // streach the image
@@ -69,8 +74,8 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
             TitleText = titlePassed!
             setupNavigationBar()
         }
+        //headerRect.size.width = UIScreen.mainScreen().bounds.width
         headerRect.origin.y = tableView.contentOffset.y
-        
         headerView.frame = headerRect
     }
     
@@ -79,13 +84,10 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
         label.font = UIFont.boldSystemFontOfSize(23.0)
         label.textColor = UIColor.darkGrayColor()
         label.textAlignment = .Center
-        label.text = TitleText //"Treatment"
+        label.text = TitleText
         navigationItem.titleView = label
     }
     
-    
- 
-
     
     // MARK: - Table view data source
 
@@ -117,7 +119,6 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     // Update scrollOffset on tableview scroll
      func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
-       // print ("\(tableView.contentOffset.y)")
     }
    
 

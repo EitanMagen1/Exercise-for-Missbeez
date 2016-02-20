@@ -9,13 +9,15 @@
 import UIKit
 
 let cellIdentifier = "cellIdentifier"
+var DisplayNewVCtitle : String = ""
+var NumberOfLineChoosen : Int = 0
+let itemDescription = ["Manicure","Pedicure","Hair treatment","Specials"]
 
 class MainViewController: UITableViewController    {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-      
     }
 
     private func setupNavigationBar() {
@@ -24,11 +26,9 @@ class MainViewController: UITableViewController    {
         label.textColor = UIColor.darkGrayColor()
         label.textAlignment = .Center
         label.text = "Services"
-        
         navigationItem.titleView = label
     }
    
-    let itemDescription = ["Manicure","Pedicure","Hair treatment","Specials"]
     
     // MARK: - Table View Delegate and Data Source
     
@@ -52,24 +52,19 @@ class MainViewController: UITableViewController    {
         cell.pictureDescription.textColor = UIColor.whiteColor()
         cell.pictureDescription.text = itemDescription[indexPath.row]
         cell.pictureDescription.font = UIFont.systemFontOfSize(20.0)
-
-        
         return cell
-
     }
-    var DisplayNewVCtitle : String = ""
-    var NumberOfLineChoosen : Int = 0
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         DisplayNewVCtitle = itemDescription[indexPath.row]
         NumberOfLineChoosen = indexPath.row
         self.performSegueWithIdentifier("ShowSecondView", sender: nil);
-
     }
     
     func imageAtIndex(index: Int) -> UIImage? {
         return UIImage(named: String(index))
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowSecondView" {
             let vc : DisplayTableViewController = segue.destinationViewController as! DisplayTableViewController
