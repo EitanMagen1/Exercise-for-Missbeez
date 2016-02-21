@@ -12,14 +12,27 @@ let cellIdentifier = "cellIdentifier"
 var DisplayNewVCtitle : String = ""
 var NumberOfLineChoosen : Int = 0
 let itemDescription = ["Manicure","Pedicure","Hair treatment","Specials"]
+private let refreshViewHeight: CGFloat = 200
 
 class MainViewController: UITableViewController    {
 
+    var refreshView: RefreshView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
+        refreshView.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(refreshView, atIndex: 0)
+        
         setupNavigationBar()
     }
-
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        refreshView.scrollViewDidScroll(scrollView)
+    }
+    
     private func setupNavigationBar() {
         let label = UILabel(frame: CGRectMake(0, 0, 200, 30))
         label.font = UIFont.boldSystemFontOfSize(21.0)
