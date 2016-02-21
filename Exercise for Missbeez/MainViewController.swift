@@ -15,7 +15,15 @@ let itemDescription = ["Manicure","Pedicure","Hair treatment","Specials"]
 // setting up the refresh view size which will be located above the screen
 private let refreshViewHeight: CGFloat = 200
 
-class MainViewController: UITableViewController    {
+func delayBySeconds(seconds: Double, delayedCode: ()->()) {
+    let targetTime = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * seconds))
+    dispatch_after(targetTime, dispatch_get_main_queue()) {
+        delayedCode()
+    }
+}
+
+
+class MainViewController: UITableViewController   {
 //setting up the refresh property
     var refreshView: RefreshView!
 
@@ -27,6 +35,9 @@ class MainViewController: UITableViewController    {
         refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
         // will allow to code the auto layout
         refreshView.translatesAutoresizingMaskIntoConstraints = false
+        //set delegate to call when the user request a refresh
+        refreshView.delegate = self
+        
         // add the refresh view as a sub view indexed 0 which means under the table view
         view.insertSubview(refreshView, atIndex: 0)
         
@@ -37,6 +48,11 @@ class MainViewController: UITableViewController    {
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         refreshView.scrollViewDidScroll(scrollView)
     }
+    
+    override func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        refreshView.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
+    
     
     private func setupNavigationBar() {
         let label = UILabel(frame: CGRectMake(0, 0, 200, 30))
@@ -88,6 +104,15 @@ class MainViewController: UITableViewController    {
             let vc : DisplayTableViewController = segue.destinationViewController as! DisplayTableViewController
             vc.titlePassed = DisplayNewVCtitle
             vc.imageNumber = NumberOfLineChoosen
+        }
+    }
+}
+
+extension MainViewController: RefreshViewDelegate {
+    func refreshViewDidRefresh(refreshView: RefreshView) {
+        // place any refresh contant here!
+        delayBySeconds(3) {
+            self.refreshView.endRefreshing()
         }
     }
 }

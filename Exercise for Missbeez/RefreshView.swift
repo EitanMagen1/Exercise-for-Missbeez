@@ -21,7 +21,7 @@
 */
 
 import UIKit
-
+// protocol that lets the delegate know the user wants to refresh the data
 protocol RefreshViewDelegate: class {
     func refreshViewDidRefresh(refreshView: RefreshView)
 }
@@ -34,7 +34,7 @@ class RefreshView: UIView {
     // property to keep track of the persentage wise we pulled down
     var progressPercentage: CGFloat = 0
     weak var delegate: RefreshViewDelegate?
-    
+    // indicates if we are refreshing right now or not
     var isRefreshing = false
     
     // holds the refresh items objects we created
@@ -94,7 +94,7 @@ class RefreshView: UIView {
         let value = progressPercentage * 0.7 + 0.2
         backgroundColor = UIColor(red: value, green: value, blue: value, alpha: 1.0)
     }
-    // helper method to update the position of all of the images a s we scroll
+    // helper method to update the position of all of the images as we scroll
     func updateRefreshItemPositions() {
         for refreshItem in refreshItems {
             refreshItem.updateViewPositionForPercentage(progressPercentage)
@@ -102,6 +102,7 @@ class RefreshView: UIView {
     }
     
     func beginRefreshing() {
+        //set flag
         isRefreshing = true
         
         UIView.animateWithDuration(0.4, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
@@ -109,7 +110,7 @@ class RefreshView: UIView {
             }, completion: { (_) -> Void in
         })
     }
-    
+    // undo the change of contact inset
     func endRefreshing() {
         UIView.animateWithDuration(0.4, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
             self.scrollView.contentInset.top -= sceneHeight
@@ -121,9 +122,13 @@ class RefreshView: UIView {
 }
 
 extension RefreshView: UIScrollViewDelegate {
+    // when the user lifts his finger this method will be called
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // are we already refreshing? no! and the progress presentage is 100%
         if !isRefreshing && progressPercentage == 1 {
+            // beginfrereshing calculates the contentInset.top and we will pass it to the memory y location
             beginRefreshing()
+            // changing the y value for the target
             targetContentOffset.memory.y = -scrollView.contentInset.top
             delegate?.refreshViewDidRefresh(self)
         }
