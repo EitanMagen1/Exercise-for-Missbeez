@@ -12,23 +12,28 @@ let cellIdentifier = "cellIdentifier"
 var DisplayNewVCtitle : String = ""
 var NumberOfLineChoosen : Int = 0
 let itemDescription = ["Manicure","Pedicure","Hair treatment","Specials"]
+// setting up the refresh view size which will be located above the screen
 private let refreshViewHeight: CGFloat = 200
 
 class MainViewController: UITableViewController    {
-
+//setting up the refresh property
     var refreshView: RefreshView!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //initialize the refresh view
         refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
+        // will allow to code the auto layout
         refreshView.translatesAutoresizingMaskIntoConstraints = false
+        // add the refresh view as a sub view indexed 0 which means under the table view
         view.insertSubview(refreshView, atIndex: 0)
         
         setupNavigationBar()
     }
     
+    // copy the scrooling done in this view controller to the refresh view
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         refreshView.scrollViewDidScroll(scrollView)
     }

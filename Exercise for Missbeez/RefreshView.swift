@@ -25,16 +25,19 @@ import UIKit
 protocol RefreshViewDelegate: class {
     func refreshViewDidRefresh(refreshView: RefreshView)
 }
-
+// the hieght of the pull to refresh sceen
 private let sceneHeight: CGFloat = 120
 
 class RefreshView: UIView {
     private unowned var scrollView: UIScrollView
+    
+    // property to keep track of the persentage wise we pulled down
     var progressPercentage: CGFloat = 0
     weak var delegate: RefreshViewDelegate?
     
     var isRefreshing = false
     
+    // holds the refresh items objects we created
     var refreshItems = [RefreshItem]()
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,25 +45,29 @@ class RefreshView: UIView {
         assert(false, "use init(frame:scrollView:)")
         super.init(coder: aDecoder)
     }
-    
+    //set initializer
     init(frame: CGRect, scrollView: UIScrollView) {
         self.scrollView = scrollView
         super.init(frame: frame)
         clipsToBounds = true
-        
+        // scroll is 0 so set the background color to 0.2 dark gray
         updateBackgroundColor()
         setupRefreshItems()
     }
-    
+    // helper method to load the objects
     func setupRefreshItems() {
+        
+        // create the images from the assets library
         let groundImageView = UIImageView(image: UIImage(named: "ground"))
         let buildingsImageView = UIImageView(image: UIImage(named: "buildings"))
         let sunImageView = UIImageView(image: UIImage(named: "sun"))
-        let catImageView = UIImageView(image: UIImage(named: "cat"))
-        let capeBackImageView = UIImageView(image: UIImage(named: "cape_back"))
-        let capeFrontImageView = UIImageView(image: UIImage(named: "cape_front"))
+        let catImageView = UIImageView(image: UIImage(named: "girl1"))
+        let capeBackImageView = UIImageView(image: UIImage(named: "house2"))
+        let capeFrontImageView = UIImageView(image: UIImage(named: "serviceGirl1"))
         
         refreshItems = [
+            // view : setting the image , centerEND : X: centered horizontaly , Y: get the height of the bounds of the current view which is the refresh view and go up by half of the size to reach the middle , parralex ration will determane the speed of movement of the view
+            // we want the building to end up above the ground there for we go up by the height of the ground CGRectGetHeight(groundImageView.bounds)
             RefreshItem(view: buildingsImageView,
                 centerEnd: CGPoint(x: CGRectGetMidX(bounds),
                     y: CGRectGetHeight(bounds) - CGRectGetHeight(groundImageView.bounds) - CGRectGetHeight(buildingsImageView.bounds) / 2),
@@ -74,20 +81,20 @@ class RefreshView: UIView {
                     y: CGRectGetHeight(bounds) - CGRectGetHeight(groundImageView.bounds)/2),
                 parallaxRatio: 0.5, sceneHeight: sceneHeight),
             RefreshItem(view: capeBackImageView, centerEnd: CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetHeight(bounds) - CGRectGetHeight(groundImageView.bounds)/2 - CGRectGetHeight(capeBackImageView.bounds)/2), parallaxRatio: -1, sceneHeight: sceneHeight),
-            RefreshItem(view: catImageView, centerEnd: CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetHeight(bounds) - CGRectGetHeight(groundImageView.bounds)/2 - CGRectGetHeight(catImageView.bounds)/2), parallaxRatio: 1, sceneHeight: sceneHeight),
-            RefreshItem(view: capeFrontImageView, centerEnd: CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetHeight(bounds) - CGRectGetHeight(groundImageView.bounds)/2 - CGRectGetHeight(capeFrontImageView.bounds)/2), parallaxRatio: -1, sceneHeight: sceneHeight),
+            RefreshItem(view: catImageView, centerEnd: CGPoint(x: CGRectGetMidX(bounds)-10, y: CGRectGetHeight(bounds) - CGRectGetHeight(groundImageView.bounds)/2 - CGRectGetHeight(catImageView.bounds)/2), parallaxRatio: 1, sceneHeight: sceneHeight),
+            RefreshItem(view: capeFrontImageView, centerEnd: CGPoint(x: CGRectGetMidX(bounds)+10, y: CGRectGetHeight(bounds) - CGRectGetHeight(groundImageView.bounds)/2 - CGRectGetHeight(capeFrontImageView.bounds)/2), parallaxRatio: -1, sceneHeight: sceneHeight),
         ]
-        
+        // building the image as layers of subviews , the order matters , we start with the building , sun , ground , cape , cat , capefront
         for refreshItem in refreshItems {
             addSubview(refreshItem.view)
         }
     }
-    
+    // changes the bakground image color from dark gray 0.2 to light gray 0.9 as the progress grows
     func updateBackgroundColor() {
         let value = progressPercentage * 0.7 + 0.2
         backgroundColor = UIColor(red: value, green: value, blue: value, alpha: 1.0)
     }
-    
+    // helper method to update the position of all of the images a s we scroll
     func updateRefreshItemPositions() {
         for refreshItem in refreshItems {
             refreshItem.updateViewPositionForPercentage(progressPercentage)
@@ -128,9 +135,11 @@ extension RefreshView: UIScrollViewDelegate {
         }
         
         let refreshViewVisibleHeight = max(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))
+        //calculate the scroll percentage from 0 to 1 , the output is min 0 max 1
         progressPercentage = min(1, refreshViewVisibleHeight / sceneHeight)
         
         updateBackgroundColor()
+        //update the center location each time a scroll has benn called
         updateRefreshItemPositions()
     }
 }

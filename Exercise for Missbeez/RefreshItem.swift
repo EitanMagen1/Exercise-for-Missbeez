@@ -23,10 +23,12 @@
 import UIKit
 
 class RefreshItem {
+    // prepare for animation , determine the start and the end off the images
   private var centerStart: CGPoint
   private var centerEnd: CGPoint
   unowned var view: UIView
 
+    // locate the images in the right place acording to the parallax ration , the cat will be at 1 it moves in the same speed as scrolling, the cape at -1 it moves in the negative direction same speed of scrolling etc
   init(view: UIView, centerEnd: CGPoint, parallaxRatio: CGFloat, sceneHeight: CGFloat) {
     self.view = view
     self.centerEnd = centerEnd
@@ -34,7 +36,7 @@ class RefreshItem {
       y: centerEnd.y + (parallaxRatio * sceneHeight))
     self.view.center = centerStart
   }
-
+// helper method to change the center point acording to the presentage of scrolling
   func updateViewPositionForPercentage(percentage: CGFloat) {
     view.center = CGPoint(
       x: centerStart.x + (centerEnd.x - centerStart.x) * percentage,

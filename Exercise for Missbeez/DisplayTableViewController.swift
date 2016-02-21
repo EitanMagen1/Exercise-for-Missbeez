@@ -18,7 +18,7 @@ class DisplayTableViewController: UIViewController, UITableViewDataSource, UITab
     
     // Set the default height for the image on the top.
     var imageHeight:CGFloat = UIScreen.mainScreen().bounds.height / 2
-    //make the image a bit largr so the shrink effect will be effective
+    //make the image a bit largr so the shrink effect will be shown
     var imageWidth:CGFloat =  UIScreen.mainScreen().bounds.width + 20
     var TitleText : String = ""
     var titlePassed : String?
